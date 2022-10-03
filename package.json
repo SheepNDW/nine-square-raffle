@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.45.26",
-    "vue": "^3.2.40"
+    "vue": "^3.2.40",
+    "vue-final-modal": "^3.4.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

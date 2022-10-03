@@ -14,11 +14,13 @@ specifiers:
   unocss: ^0.45.26
   vite: ^3.1.4
   vue: ^3.2.40
+  vue-final-modal: ^3.4.4
   vue-tsc: ^0.40.13
 
 dependencies:
   '@unocss/reset': 0.45.26
   vue: 3.2.40
+  vue-final-modal: 3.4.4
 
 devDependencies:
   '@rushstack/eslint-patch': 1.2.0
@@ -2507,6 +2509,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-final-modal/3.4.4:
+    resolution: {integrity: sha512-4nOLU+cMcUqAT0kg+64+Hi96kkQPOph2LOJa7Fl58BXlTyhfRxaMuz3M91wi2ooMIL4poWA8428P5GIAXSpuZg==}
+    dev: false
 
   /vue-tsc/0.40.13_typescript@4.7.4:
     resolution: {integrity: sha512-xzuN3g5PnKfJcNrLv4+mAjteMd5wLm5fRhW0034OfNJZY4WhB07vhngea/XeGn7wNYt16r7syonzvW/54dcNiA==}

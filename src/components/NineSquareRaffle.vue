@@ -1,19 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { RaffleItemList } from '@/types';
+import { useRaffleStore } from '@/composables/raffleStore';
 
 // 獎品列表
-const raffleItemList = ref<RaffleItemList>([
-  { name: 'A', id: 1 },
-  { name: 'B', id: 2 },
-  { name: 'C', id: 3 },
-  { name: 'D', id: 4 },
-  { name: 'E', id: 5 },
-  { name: 'F', id: 6 },
-  { name: 'G', id: 7 },
-  { name: 'H', id: 8 },
-  { name: 'I', id: 9 },
-]);
+const store = useRaffleStore();
+const raffleItemList = computed(() => store.raffleItems.value);
 
 // 本輪中獎的獎項
 const raffleResult = ref<null | string>(null);
@@ -125,10 +116,12 @@ const speedHandler = () => {
       badge-lg-teal
       transition
       hover:translate-y--2px
-      block
+      flex
+      items-center
       mx-auto
       mt-4
     >
+      <div i-mdi-dice mr-1></div>
       開始
     </button>
   </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useRaffleStore } from '@/composables/raffleStore';
+import { getRandomNumber } from '@/utils/getRandom';
 
 // 獎品列表
 const store = useRaffleStore();
@@ -47,11 +48,11 @@ const drawing = () => {
 
   if (!winingRaffle.value) {
     // 如果沒有黑箱，則隨機取得一個 0~8 的數字當作獎品列表的索引值
-    winingRaffle.value = Math.round(Math.random() * 8);
+    winingRaffle.value = getRandomNumber(0, 8);
   }
 
-  // 決定圈數，隨機選擇 10-20 圈，當 winingRaffle > 4 時少一圈
-  const num = Math.round(Math.random() * 10) + 10;
+  // 決定圈數，隨機選擇 8-16 圈，當 winingRaffle > 4 時少一圈
+  const num = getRandomNumber(8, 16);
   targetTurnsNumber.value = winingRaffle.value > 4 ? num - 1 : num;
 
   handleRaffle();

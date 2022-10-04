@@ -99,7 +99,7 @@ const speedHandler = () => {
   <div>
     <ul class="w-[300px] h-[300px] flex flex-wrap justify-around items-center">
       <li
-        class="w-[95px] h-[95px] border rounded"
+        class="w-[95px] h-[95px] border rounded flex items-center justify-center"
         :class="{ selected: selectedItem === index }"
         v-for="(item, index) in raffleItemList"
         :key="index"

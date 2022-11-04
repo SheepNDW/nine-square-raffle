@@ -10,6 +10,10 @@ const raffleItemList = computed(() => store.raffleItems.value);
 // 本輪中獎的獎項
 const raffleResult = ref<null | string>(null);
 
+// 抽獎紀錄
+const totalResults = ref<string[]>([]);
+const clearHistory = () => (totalResults.value = []);
+
 // 中獎的索引 & 強迫中獎方法
 const winingRaffle = ref<null | number>(null);
 const setBlackBoxRaffle = (index: number) => (winingRaffle.value = index);
@@ -73,6 +77,7 @@ const handleRaffle = () => {
   // 判斷轉動圈數是否已經等於總圈數以及轉到中獎位置上
   if (targetTurnsNumber.value === turnsNumber.value && selectedItem.value === winingRaffle.value) {
     raffleResult.value = raffleItemList.value[winingRaffle.value].name;
+    totalResults.value.push(raffleItemList.value[winingRaffle.value].name);
     clearTimeout(speedTimer as ReturnType<typeof setTimeout>);
     speedTimer = null;
     winingRaffle.value = null;
@@ -99,7 +104,7 @@ const speedHandler = () => {
   <div>
     <ul class="w-[300px] h-[300px] flex flex-wrap justify-around items-center">
       <li
-        class="w-[95px] h-[95px] border rounded flex items-center justify-center"
+        class="w-[95px] h-[95px] p-2 border rounded flex items-center justify-center break-all"
         :class="{ selected: selectedItem === index }"
         v-for="(item, index) in raffleItemList"
         :key="index"
@@ -109,7 +114,11 @@ const speedHandler = () => {
       </li>
     </ul>
 
-    <div mt-4>抽選結果：{{ raffleResult }}</div>
+    <div mt-4>本次抽選結果：{{ raffleResult }}</div>
+    <div mt-4>
+      歷史紀錄：
+      <span v-for="(result, i) in totalResults" :key="i">{{ result + ' ' }}</span>
+    </div>
 
     <button
       @click="drawing"
@@ -124,6 +133,20 @@ const speedHandler = () => {
     >
       <div i-mdi-dice mr-1></div>
       開始
+    </button>
+    <button
+      @click="clearHistory"
+      type="button"
+      badge-lg-yellow
+      transition
+      hover:translate-y--2px
+      flex
+      items-center
+      mx-auto
+      mt-2
+    >
+      <div i-mdi-refresh mr-1></div>
+      清除歷史
     </button>
   </div>
 </template>

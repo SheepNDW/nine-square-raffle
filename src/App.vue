@@ -4,7 +4,7 @@ import Settings from './components/Settings.vue';
 </script>
 
 <template>
-  <div grid place-items-center mt-10 h="450px md:1/2">
+  <div grid place-items-center mt-10 gap-2 h="450px md:1/2">
     <NineSquareRaffle />
     <Settings />
   </div>
